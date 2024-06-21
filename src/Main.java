@@ -5,7 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите количество вкладов");
         String numberOfString = scanner.nextLine();
-        int number= Integer.parseInt(numberOfString);
+        int number = Integer.parseInt(numberOfString);
 
         System.out.println("Введите сумму, процент вклада и срок");
         for (int i = 0; i < number; i++) {
@@ -18,14 +18,15 @@ public class Main {
             Calculator calculator = new Calculator(amout, rate, period);
 
             while (true) {
-                number= scanner.nextInt();
+                number = scanner.nextInt();
                 Result result = calculator.addNumber(number);
-                System.out.println("Доход с каждого вклада " + result.getAverageProfit());
+
+
+                System.out.println("Доход с каждого вклада " + result.getProfit());
                 System.out.println("Самый выгодный вклад " + result.getFavorRate());
                 System.out.println("Средняя прибыль с каждого вклада " + result.getAverageProfit());
+
             }
-
-
         }
     }
 }

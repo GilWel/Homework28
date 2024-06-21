@@ -11,6 +11,7 @@ public class Result {
         this.averageProfit = averageProfit;
     }
 
+
     public double getProfit() {
         return profit;
     }

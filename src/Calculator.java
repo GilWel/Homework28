@@ -11,20 +11,20 @@ public class Calculator {
         numbers = new ArrayList<>();
     }
 
-        public Result addNumber(int number) {
+    public Result addNumber(int number) {
         numbers.add(number);
 
-int amout =0;
-double rate = 0;
-int period = 0;
-double min = 0;
-double sum = 0;
+        int amout =0;
+        double rate = 0;
+        int period = 0;
+        double min = 0;
+        double sum = 0;
 
         double profit = calculateProfit(amout, rate, period);
         double favorRate = calculateFavorRate(min);
 
-            double averageProfit=calculateAverage(sum);
-            Result result = new Result(profit, favorRate, averageProfit);
+        double averageProfit=calculateAverage(sum);
+        Result result = new Result(profit, favorRate, averageProfit);
         return result;
     }
 
@@ -46,23 +46,12 @@ double sum = 0;
         return profit+1;
     }
 
-        private double calculateFavorRate ( double min){
+    private double calculateFavorRate ( double min){
 
-            for (int i = 0; i < numbers.size(); i++) {
-                if (numbers.get(1) < min) {
-                }
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(1) < min) {
             }
-            return min;
         }
+        return min;
     }
-
-
-
-
-
-
-
-
-
-
-
+}
