@@ -8,28 +8,25 @@ public class Main {
         int number = Integer.parseInt(numberOfString);
 
         System.out.println("Введите сумму, процент вклада и срок");
-        for (int i = 0; i < number; i++) {
+        for (int i = 0; i <= number; i++) {
             String string = scanner.nextLine();
-
             String[] numbers = string.split(" ");
             int amout = Integer.parseInt(numbers[0]);
             double rate = Double.parseDouble(numbers[1]);
             int period = Integer.parseInt(numbers[2]);
-            Calculator calculator = new Calculator(amout, rate, period);
 
-            while (true) {
-                number = scanner.nextInt();
-                Result result = calculator.addNumber(number);
+            Calculator calculator = new Calculator(amout, rate, period);
+              Result result = calculator.addNumber(number);
+
 
 
                 System.out.println("Доход с каждого вклада " + result.getProfit());
-                System.out.println("Самый выгодный вклад " + result.getFavorRate());
-                System.out.println("Средняя прибыль с каждого вклада " + result.getAverageProfit());
+
 
             }
         }
     }
-}
+
 
 
 
