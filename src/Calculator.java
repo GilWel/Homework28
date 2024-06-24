@@ -2,42 +2,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    private List<Integer> numbers;
+    public Result calculateInfoAboutDeposits(List<Deposit> deposits) {
+        double averageProfit = calculateAverageProfit(deposits);
+        int maxIndex = calculateMaxIndex(deposits);
+        List<Double> profits = calculateListOfProfits(deposits);
 
-    private final static int CONVERSION_TO_PERCENTAGE = 100;
-
-    public Calculator(int amout, double rate, int period) {
-
-        numbers = new ArrayList<>();
+        return new Result(maxIndex, averageProfit, profits);
     }
 
-    public Result addNumber(int number) {
-        numbers.add(number);
+    private double calculateAverageProfit(List<Deposit> deposits) {
+        double sumOfProfits = 0.0;
 
-        int amout = 0;
-        double rate = 0;
-        int period = 0;
-        double min = 0;
-        double sum = 0;
+        for (int i = 0; i < deposits.size(); i++) {
+            Deposit deposit = deposits.get(i);
+            double profit = deposit.getProfit();
+            sumOfProfits += profit;
+        }
 
-        double profit = calculateProfit(amout, rate, period);
-        double favorRate = 0;
-        double averageProfit = 0;
-
-        Result result = new Result(profit, favorRate, averageProfit);
-        return result;
+        double averageProfit = sumOfProfits / deposits.size();
+        return averageProfit;
     }
 
+    private int calculateMaxIndex(List<Deposit> deposits) {
+        double maxProfit = Double.MIN_VALUE;
+        int maxIndex = 0;
 
-    private double calculateProfit(int amout, double rate, int period) {
+        for (int i = 0; i < deposits.size(); i++) {
+            Deposit deposit = deposits.get(i);
+            double profit = deposit.getProfit();
 
-        double profit = 0;
-        for (int j = 1; j <= period; j++) {
-            amout += profit;
-            profit = (amout * rate * j) / CONVERSION_TO_PERCENTAGE;
-                    }
-        return ++profit;
+            if (profit > maxProfit) {
+                maxProfit = profit;
+                maxIndex = i;
+            }
+        }
+
+        return maxIndex;
     }
 
+    private List<Double> calculateListOfProfits(List<Deposit> deposits) {
+        List<Double> profits = new ArrayList<>();
 
+        for (int i = 0; i < deposits.size(); i++) {
+            Deposit deposit = deposits.get(i);
+            double profit = deposit.getProfit();
+
+            profits.add(profit);
+        }
+
+        return profits;
+    }
 }

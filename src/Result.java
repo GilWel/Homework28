@@ -1,39 +1,36 @@
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 public class Result {
-    private double profit;
-    private double favorRate;
-    private double averageProfit;
+    private int indexOfMaxProfitDeposit;
 
-    public Result(double profit, double favorRate, double averageProfit) {
-        this.profit = profit;
-        this.favorRate = favorRate;
-        this.averageProfit = averageProfit;
+    private double averageProfitByDeposits;
+
+    private List<Double> allProfits;
+
+    public int getIndexOfMaxProfitDeposit() {
+        return indexOfMaxProfitDeposit;
     }
 
-
-    public double getProfit() {
-        return profit;
+    public void setIndexOfMaxProfitDeposit(int indexOfMaxProfitDeposit) {
+        this.indexOfMaxProfitDeposit = indexOfMaxProfitDeposit;
     }
 
-    public void setProfit(double profit) {
-        this.profit = profit;
+    public double getAverageProfitByDeposits() {
+        return averageProfitByDeposits;
     }
 
-    public double getFavorRate() {
-        return favorRate;
+    public void setAverageProfitByDeposits(double averageProfitByDeposits) {
+        this.averageProfitByDeposits = averageProfitByDeposits;
     }
 
-    public void setFavorRate(double favorRate) {
-        this.favorRate = favorRate;
+    public List<Double> getAllProfits() {
+        return allProfits;
     }
 
-    public double getAverageProfit() {
-        return averageProfit;
-    }
-
-    public void setAverageProfit(double averageProfit) {
-        this.averageProfit = averageProfit;
+    public void setAllProfits(List<Double> allProfits) {
+        this.allProfits = allProfits;
     }
 
     @Override
@@ -41,20 +38,27 @@ public class Result {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Result result = (Result) o;
-        return Double.compare(profit, result.profit) == 0 && Double.compare(favorRate, result.favorRate) == 0 && Double.compare(averageProfit, result.averageProfit) == 0;
+        return indexOfMaxProfitDeposit == result.indexOfMaxProfitDeposit && Double.compare(averageProfitByDeposits, result.averageProfitByDeposits) == 0 && Objects.equals(allProfits, result.allProfits);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(profit, favorRate, averageProfit);
+        return Objects.hash(indexOfMaxProfitDeposit, averageProfitByDeposits, allProfits);
     }
 
     @Override
     public String toString() {
         return "Result{" +
-                "profit=" + profit +
-                ", favorRate=" + favorRate +
-                ", averageProfit=" + averageProfit +
+                "indexOfMaxProfitDeposit=" + indexOfMaxProfitDeposit +
+                ", averageProfitByDeposits=" + averageProfitByDeposits +
+                ", allProfits=" + allProfits +
                 '}';
+    }
+
+    public Result(int indexOfMaxProfitDeposit, double averageProfitByDeposits, List<Double> allProfits) {
+        this.indexOfMaxProfitDeposit = indexOfMaxProfitDeposit;
+        this.averageProfitByDeposits = averageProfitByDeposits;
+        this.allProfits = allProfits;
+
     }
 }
